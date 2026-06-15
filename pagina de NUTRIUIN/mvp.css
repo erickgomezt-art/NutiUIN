@@ -1,0 +1,119 @@
+/* =====================================================
+   CONFIGURACIÓN GENERAL DE LA PÁGINA MVP
+   ===================================================== */
+
+body{
+
+    /* Elimina márgenes automáticos */
+    margin: 0;
+
+    /* Ocupa toda la pantalla */
+    min-height: 100vh;
+
+    /* Tipo de letra */
+    font-family: Arial, sans-serif;
+
+    /* Activa Flexbox */
+    display: flex;
+
+    /* Organiza los elementos en columna */
+    flex-direction: column;
+
+    /* Centra verticalmente */
+    justify-content: center;
+
+    /* Centra horizontalmente */
+    align-items: center;
+
+    /* Fondo degradado relacionado con salud */
+    background: linear-gradient(
+        135deg,
+        #d4fc79,
+        #96e6a1
+    );
+}
+
+/* =====================================================
+   TÍTULO PRINCIPAL
+   ===================================================== */
+
+h1{
+
+    color: #2c3e50;
+
+    font-size: 36px;
+
+    margin-bottom: 25px;
+}
+
+/* =====================================================
+   ESTILOS DE LOS CAMPOS DE TEXTO
+   ===================================================== */
+
+input{
+
+    /* Ancho de la caja */
+    width: 250px;
+
+    /* Espacio interno */
+    padding: 10px;
+
+    /* Esquinas redondeadas */
+    border-radius: 5px;
+
+    /* Borde gris */
+    border: 1px solid gray;
+
+    /* Tamaño de letra */
+    font-size: 1opx;
+}
+
+
+/* =====================================================
+   ESTILOS DE LOS MENÚS DESPLEGABLES
+   ===================================================== */
+
+select{
+
+    /* Ancho */
+    width: 270px;
+
+    /* Espacio interno */
+    padding: 10px;
+
+    /* Esquinas redondeadas */
+    border-radius: 5px;
+
+    /* Borde gris */
+    border: 1px solid gray;
+
+    /* Tamaño de letra */
+    font-size: 16px;
+}
+
+/* =====================================================
+   BOTÓN CALCULAR
+   ===================================================== */
+
+button{
+
+    background-color: #27ae60;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+button:hover{
+
+    background-color: #219150;
+}
+
