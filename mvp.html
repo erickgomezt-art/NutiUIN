@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- Indica que el documento utilizará HTML5 -->
+
+<html lang="es">
+<!-- Página en español -->
+
+<head>
+
+    <!-- Permite caracteres especiales -->
+    <meta charset="UTF-8">
+
+    <!-- Título de la pestaña -->
+    <title>MVP NutriUIN</title>
+
+    <!-- Conecta el CSS -->
+    <link rel="stylesheet" href="mvp.css">
+
+</head>
+
+<body>
+
+    <!-- Título principal -->
+    <h1>Datos del Usuario</h1>
+
+    <!--
+    Campo para escribir el nombre.
+
+    type="text"
+    permite introducir texto.
+
+    id="nombre"
+    permite localizar el campo desde JavaScript.
+    -->
+    <input
+        type="text"
+        id="nombre"
+        placeholder="Nombre completo">
+
+    <br><br>
+
+    <!-- Campo para la edad -->
+    <input
+        type="number"
+        id="edad"
+        placeholder="Edad">
+
+    <br><br>
+
+    <!--
+    Menú desplegable para seleccionar género.
+    -->
+    <select id="genero">
+
+        <option>
+            Hombre
+        </option>
+
+        <option>
+            Mujer
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <!-- Peso corporal -->
+    <input
+        type="number"
+        id="peso"
+        placeholder="Peso en kg">
+
+    <br><br>
+
+    <!-- Estatura -->
+    <input
+        type="number"
+        step="0.01"
+        id="estatura"
+        placeholder="Estatura en metros">
+
+    <br><br>
+
+  <!-- Nivel de actividad física -->
+<select id="actividad" required>
+
+    <!-- Texto que funciona como placeholder -->
+    <option value="" disabled selected>
+        Actividad Física
+    </option>
+
+    <option value="1.2">
+        Sedentario
+    </option>
+
+    <option value="1.375">
+        Ligero
+    </option>
+
+    <option value="1.55">
+        Moderado
+    </option>
+
+    <option value="1.75">
+        Intenso
+    </option>
+
+    <option value="1.9">
+        Muy Intenso
+    </option>
+
+</select>
+
+    <br><br>
+
+    <!-- Objetivo del usuario -->
+    <select id="objetivo">
+
+        <option>
+            Bajar de peso
+        </option>
+
+        <option>
+            Mantener peso
+        </option>
+
+        <option>
+            Subir masa muscular
+        </option>
+
+    </select>
+
+    <br><br>
+
+   <!--
+Al hacer clic se ejecuta la función calcularIMC()
+que está en JavaScript.
+-->
+<button onclick="calcularIMC()">
+    Calcular IMC
+</button>
+
+<!-- Conecta el archivo JavaScript -->
+<script src="login.js"></script>
+
+
+</body>
+
+</html>
