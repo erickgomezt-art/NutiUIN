@@ -1,2 +1,2 @@
-# NutiUIN
+# NutriUIN
 Calculadora nutrimental relacionada con las calorías y la forma de crear recetas 
