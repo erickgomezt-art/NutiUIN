@@ -1,0 +1,19 @@
+LOGO DE LA PESTAÑA DEL NAVEGADOR
+
+Ya se agregaron estos archivos:
+- favicon.ico
+- favicon.png
+- apple-touch-icon.png
+
+También se añadió el código correspondiente en:
+- index.html
+- mvp.html
+- menus.html
+- menu.html
+
+Para comprobarlo:
+1. Abre index.html con Live Server.
+2. Presiona Ctrl + F5 para actualizar sin caché.
+3. Si el navegador conserva el logo anterior, cierra la pestaña y vuelve a abrirla.
+
+No borres los archivos favicon.ico, favicon.png ni apple-touch-icon.png.

@@ -1,0 +1,31 @@
+NUTRIUIN - CAMBIOS REALIZADOS
+================================
+
+Se importaron 1247 alimentos desde las ocho hojas de Tablas_Alimentos_Con_Precios.xlsx.
+
+SECCIONES NUEVAS:
+1. A.O.A. bajo en grasa (138 alimentos)
+2. Azúcares sin grasa (108 alimentos)
+3. Cereales con grasa (198 alimentos)
+4. Cereales sin grasa (352 alimentos)
+5. Frutas (229 alimentos)
+6. Leche entera (36 alimentos)
+7. Leguminosas (35 alimentos)
+8. Verduras (151 alimentos)
+
+COLUMNAS MOSTRADAS EN CADA TABLA:
+- Alimento
+- Cantidad sugerida
+- Unidad
+- Peso bruto (g)
+- Energía (kcal)
+- Precio por 100 g (MXN)
+- Seleccionar
+
+ARCHIVOS MODIFICADOS:
+- alimentos.js
+- menus.html
+- menus.js
+- menus.css
+
+Los demás archivos se conservaron para que la portada, calculadora, límite de calorías, gráfica, menú personalizado y PDF sigan funcionando.
