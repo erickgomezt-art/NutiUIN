@@ -1,0 +1,39 @@
+<!--
+================================================================================
+ARCHIVO: index.html
+LENGUAJE: HTML
+FUNCIÓN: Es la portada principal de NutriUIN.
+CONEXIONES CON OTROS ARCHIVOS:
+1. Se conecta con estilos.css mediante <link rel="stylesheet"> para recibir diseño.
+2. Se conecta con login.js mediante <script src="login.js"> para ejecutar los botones.
+3. Las funciones entrar() y entrarMenuDirecto() están escritas en login.js.
+IMPORTANTE: HTML crea la estructura; CSS diseña; JavaScript agrega funcionamiento.
+================================================================================
+-->
+<!DOCTYPE html> <!-- Indica al navegador que este documento usa HTML5. -->
+<html lang="es"> <!-- Abre la página y define que el idioma principal es español. -->
+<head> <!-- Inicia la parte de configuración de la página. -->
+    <meta charset="UTF-8"> <!-- Permite usar acentos, ñ y caracteres especiales correctamente. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página se adapte a celulares, tablets y computadoras. -->
+    <title>NutriUIN</title> <!-- Texto que aparece en la pestaña del navegador. -->
+    <link rel="stylesheet" href="estilos.css"> <!-- Conecta esta página con el archivo de estilos principal. -->
+</head> <!-- Cierra la configuración de la página. -->
+<body> <!-- Inicia el contenido visible para el usuario. -->
+
+    <main class="caja-inicio"> <!-- Caja principal de bienvenida; usa la clase caja-inicio para recibir diseño CSS. -->
+        <div class="logo">🥗</div> <!-- Muestra un icono decorativo relacionado con nutrición. -->
+        <h1>Portada NutriUIN</h1> <!-- Título principal de la portada del proyecto. -->
+
+        <p> <!-- Abre el párrafo de descripción del proyecto. -->
+            Puedes iniciar con la calculadora para crear un menú con límite de calorías, o entrar directo al menú para revisar alimentos sin llenar datos. <!-- Explica las dos opciones disponibles en la portada. -->
+        </p> <!-- Cierra el párrafo descriptivo. -->
+
+        <div class="botones-portada"> <!-- Agrupa los botones principales de la portada. -->
+            <button onclick="entrar()">Ir a la calculadora</button> <!-- Botón que manda primero a la calculadora para calcular las calorías. -->
+            <button class="boton-secundario" onclick="entrarMenuDirecto()">Entrar directo al menú</button> <!-- Botón que manda al menú sin llenar la calculadora. -->
+        </div> <!-- Cierra el grupo de botones de la portada. -->
+    </main> <!-- Cierra la caja principal de bienvenida. -->
+
+    <script src="login.js"></script> <!-- Carga el JavaScript donde está la función entrar(). -->
+</body> <!-- Cierra el contenido visible. -->
+</html> <!-- Cierra el documento HTML. -->

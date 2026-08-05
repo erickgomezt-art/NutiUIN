@@ -1,0 +1,87 @@
+/*
+================================================================================
+ARCHIVO: estilos.css
+LENGUAJE: CSS
+FUNCIÓN: Diseña únicamente la portada index.html.
+CONEXIÓN: index.html lo carga con <link rel="stylesheet" href="estilos.css">.
+CLAVE: Las clases .caja-inicio, .logo y .botones-portada existen en index.html.
+================================================================================
+*/
+/* estilos.css: diseño de la página de inicio de NutriUIN. */
+
+/* Aplica estilos generales al cuerpo completo de la página. */
+body{
+    margin: 0; /* Quita el margen que el navegador pone por defecto. */
+    min-height: 100vh; /* Hace que el body ocupe como mínimo toda la altura de la pantalla. */
+    font-family: Arial, sans-serif; /* Define la tipografía principal de la página. */
+    background: linear-gradient(135deg, #13b878, #21cf1b); /* Crea un fondo degradado diagonal. */
+    display: flex; /* Activa Flexbox para acomodar el contenido. */
+    justify-content: center; /* Centra la caja de inicio de forma horizontal. */
+    align-items: center; /* Centra la caja de inicio de forma vertical. */
+    text-align: center; /* Centra el texto dentro de la página. */
+}
+
+/* Da forma a la tarjeta blanca de bienvenida. */
+.caja-inicio{
+    width: 85%; /* La caja usa el 85% del ancho disponible. */
+    max-width: 650px; /* Limita el ancho máximo para que no se vea demasiado grande. */
+    background: white; /* Coloca fondo blanco en la tarjeta. */
+    padding: 45px 30px; /* Agrega espacio interno arriba/abajo y a los lados. */
+    border-radius: 25px; /* Redondea las esquinas de la tarjeta. */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25); /* Agrega sombra para dar profundidad. */
+}
+
+/* Da tamaño al emoji del logo. */
+.logo{
+    font-size: 70px; /* Aumenta el tamaño del emoji. */
+}
+
+/* Estilo para el título principal. */
+h1{
+    color: #1b5e3a; /* Coloca el título en color verde. */
+    font-size: 42px; /* Define el tamaño grande del título. */
+    margin-bottom: 10px; /* Deja espacio debajo del título. */
+}
+
+/* Estilo para los párrafos de texto. */
+p{
+    color: #444; /* Usa un gris oscuro para facilitar la lectura. */
+    font-size: 19px; /* Define el tamaño del texto del párrafo. */
+    line-height: 1.5; /* Aumenta el espacio entre líneas. */
+}
+
+/* Estilo general del botón de entrada. */
+button{
+    margin-top: 20px; /* Separa el botón del texto superior. */
+    background: #1b8a5a; /* Coloca fondo verde al botón. */
+    color: white; /* Coloca el texto del botón en blanco. */
+    border: none; /* Quita el borde predeterminado del botón. */
+    padding: 14px 30px; /* Agrega espacio interno al botón. */
+    border-radius: 30px; /* Hace que el botón tenga esquinas redondeadas. */
+    font-size: 18px; /* Define el tamaño del texto del botón. */
+    cursor: pointer; /* Cambia el cursor a mano cuando se pasa encima. */
+}
+
+/* Cambia el color del botón cuando el usuario pasa el mouse encima. */
+button:hover{
+    background: #146b45; /* Usa un verde más oscuro para el efecto hover. */
+}
+
+
+/* Contenedor de los dos botones de la portada. */
+.botones-portada{
+    display: flex; /* Coloca los botones en una fila cuando hay espacio. */
+    justify-content: center; /* Centra los botones dentro de la tarjeta. */
+    gap: 15px; /* Deja espacio entre el botón de calculadora y el de menú. */
+    flex-wrap: wrap; /* Permite que los botones bajen de línea en pantallas pequeñas. */
+}
+
+/* Botón secundario para entrar directo al menú sin usar la calculadora. */
+.boton-secundario{
+    background: #7650c8; /* Usa morado para diferenciarlo del botón principal. */
+}
+
+/* Efecto del botón secundario cuando pasa el mouse encima. */
+.boton-secundario:hover{
+    background: #5b3ba0; /* Oscurece el morado al pasar el mouse. */
+}

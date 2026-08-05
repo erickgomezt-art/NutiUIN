@@ -1,0 +1,112 @@
+/*
+================================================================================
+ARCHIVO: mvp.css
+LENGUAJE: CSS
+FUNCIÓN: Diseña la calculadora que está en mvp.html.
+CONEXIÓN: mvp.html lo carga con <link rel="stylesheet" href="mvp.css">.
+CLAVE: Los selectores de este archivo deben coincidir con clases e id del HTML.
+================================================================================
+*/
+/* mvp.css: diseño de la calculadora nutricional. */
+
+/* Estilos generales de la página de la calculadora. */
+body{
+    margin: 0; /* Quita el margen por defecto del navegador. */
+    min-height: 100vh; /* Hace que el body mida al menos toda la pantalla. */
+    font-family: Arial, sans-serif; /* Define la fuente principal. */
+    background: linear-gradient(135deg, #d8f8c8, #7bd389); /* Crea un fondo degradado verde. */
+    display: flex; /* Activa Flexbox para centrar el formulario. */
+    justify-content: center; /* Centra el formulario horizontalmente. */
+    align-items: center; /* Centra el formulario verticalmente. */
+    padding: 25px 0; /* Agrega espacio vertical para que en celulares no se pegue a los bordes. */
+}
+
+/* Caja blanca del formulario. */
+.formulario{
+    width: 90%; /* Ocupa el 90% del ancho disponible. */
+    max-width: 480px; /* Evita que el formulario se haga demasiado ancho. */
+    background: white; /* Fondo blanco para destacar el formulario. */
+    padding: 30px; /* Espacio interno del formulario. */
+    border-radius: 22px; /* Redondea las esquinas del formulario. */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.20); /* Agrega sombra para profundidad. */
+    text-align: center; /* Centra el texto del formulario. */
+}
+
+/* Título principal de la calculadora. */
+h1{
+    color: #1b5e3a; /* Color verde para el título. */
+    margin-bottom: 5px; /* Deja poco espacio debajo del título. */
+}
+
+/* Párrafo descriptivo dentro del formulario. */
+.formulario p{
+    color: #555; /* Color gris para el texto. */
+}
+
+/* Campos de texto, números y listas desplegables. */
+input, select{
+    width: 100%; /* Hace que cada campo use todo el ancho del formulario. */
+    padding: 12px; /* Agrega espacio interno para escribir mejor. */
+    margin: 8px 0; /* Separa los campos entre sí. */
+    border: 1px solid #ccc; /* Borde gris claro. */
+    border-radius: 10px; /* Redondea las esquinas de los campos. */
+    font-size: 16px; /* Tamaño del texto dentro de los campos. */
+    box-sizing: border-box; /* Mantiene el ancho correcto aunque tenga padding. */
+}
+
+/* Botón principal para calcular. */
+button{
+    width: 100%; /* Hace que el botón ocupe todo el ancho del formulario. */
+    margin-top: 10px; /* Separa el botón de los campos superiores. */
+    background: #1b8a5a; /* Color verde del botón. */
+    color: white; /* Texto blanco del botón. */
+    border: none; /* Quita el borde por defecto. */
+    padding: 13px; /* Espacio interno del botón. */
+    border-radius: 12px; /* Redondea las esquinas del botón. */
+    font-size: 18px; /* Tamaño del texto del botón. */
+    cursor: pointer; /* Muestra cursor de mano al pasar encima. */
+}
+
+/* Efecto del botón cuando pasa el mouse encima. */
+button:hover{
+    background: #146b45; /* Cambia a un verde más oscuro. */
+}
+
+/* Botón que aparece al final para entrar al menú personalizado. */
+.boton-menu{
+    background: #146b45; /* Usa un verde más fuerte para destacar el siguiente paso. */
+}
+
+/* Clase que oculta elementos mientras todavía no deben mostrarse. */
+.oculto{
+    display: none; /* Oculta completamente el elemento. */
+}
+
+/* Caja donde aparecen los resultados. */
+.resultado{
+    margin-top: 18px; /* Separa la caja del botón superior. */
+    padding: 15px; /* Agrega espacio interno. */
+    background: #eef8ef; /* Fondo verde muy claro para los resultados. */
+    border-radius: 12px; /* Redondea la caja de resultados. */
+    color: #243b2f; /* Color del texto de resultados. */
+}
+
+/* Texto pequeño de advertencia. */
+small{
+    color: #555; /* Usa gris para el texto pequeño. */
+}
+
+
+/* Enlace pequeño para regresar a la portada. */
+.volver-portada{
+    display: block; /* Hace que el enlace aparezca en su propia línea. */
+    margin-top: 12px; /* Separa el enlace del botón calcular. */
+    color: #1b5e3a; /* Usa verde para mantener el estilo del proyecto. */
+    text-decoration: none; /* Quita el subrayado del enlace. */
+    font-weight: bold; /* Resalta el enlace. */
+}
+
+/* Cambia el enlace cuando el usuario pasa el mouse encima. */
+.volver-portada:hover{
+    text-decoration: underline; /* Subraya el enlace como señal de interacción. */
+}

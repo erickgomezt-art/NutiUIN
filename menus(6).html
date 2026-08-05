@@ -1,0 +1,159 @@
+<!--
+================================================================================
+ARCHIVO: menus.html
+LENGUAJE: HTML
+FUNCIÓN: Muestra categorías, alimentos, gráfica, ventana de límite y botón de PDF.
+CONEXIONES CON OTROS ARCHIVOS Y LENGUAJES:
+1. menus.css (CSS): diseña esta página, la gráfica y la ventana frontal.
+2. jsPDF (JavaScript externo): crea el archivo PDF. Se carga desde internet.
+3. alimentos.js (JavaScript): crea el arreglo global "alimentos" con la base de datos.
+4. menus.js (JavaScript): usa el arreglo "alimentos", controla botones, gráfica y PDF.
+ORDEN IMPORTANTE: alimentos.js debe cargarse ANTES de menus.js.
+PUENTE ENTRE PÁGINAS: localStorage guarda los datos calculados en mvp.html.
+================================================================================
+-->
+<!DOCTYPE html> <!-- Indica al navegador que este archivo está hecho en HTML5. -->
+<html lang="es"> <!-- Abre el documento y establece el idioma español. -->
+<head> <!-- Inicia la configuración de la página. -->
+    <meta charset="UTF-8"> <!-- Permite usar acentos, ñ y símbolos sin errores. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta el diseño para celular, tablet y computadora. -->
+    <title>Menú NutriUIN</title> <!-- Título que aparece en la pestaña del navegador. -->
+    <link rel="stylesheet" href="menus.css"> <!-- Conecta la página con el archivo de estilos del menú. -->
+</head> <!-- Cierra la configuración de la página. -->
+<body> <!-- Inicia el contenido que verá el usuario. -->
+
+    <header> <!-- Encabezado superior del menú. -->
+        <h1>Crea tu menú personalizado</h1> <!-- Título principal del menú personalizado. -->
+        <p>Agrega alimentos sin pasar las calorías estimadas al día que calculaste antes.</p> <!-- Explica el objetivo de esta página. -->
+    </header> <!-- Cierra el encabezado. -->
+
+    <nav class="barra"> <!-- Barra de navegación entre páginas. -->
+        <a href="index.html">Inicio</a> <!-- Enlace para volver a la página de inicio. -->
+        <a href="mvp.html">Recalcular calorías</a> <!-- Enlace para regresar a la calculadora. -->
+    </nav> <!-- Cierra la barra de navegación. -->
+
+    <main> <!-- Contenedor principal de la página del menú. -->
+        <section class="resumen-menu"> <!-- Sección que muestra el resumen del menú creado. -->
+            <div class="datos-calorias"> <!-- Caja con los números principales de calorías. -->
+                <h2 id="saludoUsuario">Mi menú del día</h2> <!-- Aquí JavaScript coloca el nombre del usuario si existe. -->
+                <p id="limiteCalorias">Calorías estimadas: 0 kcal</p> <!-- Aquí JavaScript muestra el límite calculado. -->
+                <p id="caloriasUsadas">Consumidas: 0 kcal</p> <!-- Aquí JavaScript muestra calorías agregadas. -->
+                <p id="caloriasRestantes">Restantes: 0 kcal</p> <!-- Aquí JavaScript muestra calorías disponibles. -->
+                <p id="estadoMeta" class="estado-meta">Preparando tu meta...</p> <!-- Muestra un estado dinámico según el avance de la gráfica. -->
+            </div> <!-- Cierra la caja de números. -->
+
+            <div class="grafica-caja"> <!-- Caja visual para la gráfica. -->
+                <div id="graficaDona" class="grafica-dona"> <!-- Gráfica de dona hecha con CSS y JavaScript. -->
+                    <span id="porcentajeGrafica">0%</span> <!-- Porcentaje usado de calorías. -->
+                </div> <!-- Cierra la gráfica de dona. -->
+                <p>Gráfica de calorías usadas vs disponibles.</p> <!-- Explica qué representa la gráfica. -->
+            </div> <!-- Cierra la caja de gráfica. -->
+
+            <div class="barra-progreso"> <!-- Contenedor de la barra de progreso. -->
+                <div id="progresoCalorias"></div> <!-- Barra interna que crece según las calorías usadas. -->
+            </div> <!-- Cierra la barra de progreso. -->
+
+            <div id="menuSeleccionado" class="menu-seleccionado"></div> <!-- Aquí JavaScript dibuja los alimentos elegidos. -->
+
+            <div class="acciones-menu"> <!-- Agrupa los botones principales del menú seleccionado. -->
+                <button class="boton-limpiar" onclick="limpiarMenu()">Limpiar menú</button> <!-- Botón para borrar los alimentos agregados. -->
+                <button class="boton-pdf" onclick="exportarPDF()">Descargar reporte PDF</button> <!-- Botón que genera un reporte PDF completo con el menú y estadísticas. -->
+            </div> <!-- Cierra la zona de acciones del menú. -->
+        </section> <!-- Cierra el resumen del menú. -->
+        <section class="contenedor"> <!-- Tarjetas generadas según las ocho hojas del archivo de Excel. -->
+            <div class="tarjeta" data-categoria="A.O.A. bajo en grasa" onclick="mostrarCategoria('A.O.A. bajo en grasa')">
+                <div class="emoji">🥩🐟</div>
+                <h2>Pescados y Carnes</h2>
+                <p id="totalAOA">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Azúcares sin grasa" onclick="mostrarCategoria('Azúcares sin grasa')">
+                <div class="emoji">🍯</div>
+                <h2>Azúcares sin grasa</h2>
+                <p id="totalAzucares">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Cereales con grasa" onclick="mostrarCategoria('Cereales con grasa')">
+                <div class="emoji">🥐</div>
+                <h2>Cereales con grasa</h2>
+                <p id="totalCerealesConGrasa">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Cereales sin grasa" onclick="mostrarCategoria('Cereales sin grasa')">
+                <div class="emoji">🥣</div>
+                <h2>Cereales sin grasa</h2>
+                <p id="totalCerealesSinGrasa">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Frutas" onclick="mostrarCategoria('Frutas')">
+                <div class="emoji">🍎</div>
+                <h2>Frutas</h2>
+                <p id="totalFrutas">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Leche entera" onclick="mostrarCategoria('Leche entera')">
+                <div class="emoji">🥛</div>
+                <h2>Leche entera</h2>
+                <p id="totalLecheEntera">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Leguminosas" onclick="mostrarCategoria('Leguminosas')">
+                <div class="emoji"> 🥜</div>
+                <h2>Leguminosas</h2>
+                <p id="totalLeguminosas">0 alimentos</p>
+            </div>
+
+            <div class="tarjeta" data-categoria="Verduras" onclick="mostrarCategoria('Verduras')">
+                <div class="emoji">🥦</div>
+                <h2>Verduras</h2>
+                <p id="totalVerduras">0 alimentos</p>
+            </div>
+        </section> <!-- Cierra la sección de tarjetas basadas en el Excel. -->
+
+        <section class="lista"> <!-- Sección donde aparece la tabla de alimentos filtrados. -->
+            <h2 id="tituloCategoria">Selecciona una categoría</h2> <!-- Título que cambia según la categoría seleccionada. -->
+            <p class="ayuda">Selecciona una sección del Excel, busca un alimento y presiona “Agregar” para meterlo a tu menú.</p> <!-- Texto de ayuda para el buscador. -->
+
+            <input type="text" id="busqueda" placeholder="Buscar alimento..." onkeyup="buscarAlimento()"> <!-- Buscador que filtra alimentos mientras el usuario escribe. -->
+
+            <div id="tablaAlimentos"></div> <!-- Aquí JavaScript dibuja la tabla con los alimentos. -->
+        </section> <!-- Cierra la sección de tabla. -->
+    </main> <!-- Cierra el contenido principal. -->
+
+
+
+    <!-- Ventana frontal que aparece cuando un alimento haría que el usuario supere su límite de calorías. -->
+    <div id="modalCalorias" class="modal-calorias" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="tituloModalCalorias"> <!-- Crea el contenedor principal de la ventana que queda oculta hasta que JavaScript agrega la clase activo. -->
+        <div class="modal-fondo" onclick="cerrarModalCalorias()"></div> <!-- Crea el fondo oscuro; al hacer clic llama a cerrarModalCalorias() de menus.js. -->
+
+        <section class="modal-tarjeta"> <!-- Crea la tarjeta blanca visible en el centro de la ventana. -->
+            <button class="modal-cerrar" type="button" onclick="cerrarModalCalorias()" aria-label="Cerrar ventana">×</button> <!-- Botón X que ejecuta la función de JavaScript para cerrar la ventana. -->
+            <div class="modal-icono">!</div> <!-- Muestra el símbolo de advertencia de la ventana. -->
+            <span class="modal-etiqueta">Límite diario</span> <!-- Muestra una etiqueta pequeña para identificar el tipo de aviso. -->
+            <h2 id="tituloModalCalorias">No se puede agregar este alimento</h2> <!-- Título de la ventana; el id también se usa para accesibilidad. -->
+            <p class="modal-mensaje">No se puede agregar porque te pasarías de tus calorías estimadas al día.</p> <!-- Muestra el mensaje principal que pidió el usuario. -->
+
+            <div class="modal-detalles"> <!-- Agrupa los tres datos dinámicos que JavaScript actualiza al rechazar un alimento. -->
+                <div> <!-- Abre una caja para agrupar una etiqueta y su valor. -->
+                    <span>Consumidas ahora</span> <!-- Etiqueta que explica el total de calorías consumidas antes del intento. -->
+                    <strong id="modalConsumidas">0 kcal</strong> <!-- Valor dinámico actualizado por mostrarModalCalorias() en menus.js. -->
+                </div> <!-- Cierra la caja abierta anteriormente. -->
+                <div> <!-- Abre una caja para agrupar una etiqueta y su valor. -->
+                    <span>Alimento rechazado</span> <!-- Etiqueta del alimento que no pudo agregarse. -->
+                    <strong id="modalAlimento">-</strong> <!-- JavaScript coloca aquí el nombre y las calorías del alimento rechazado. -->
+                </div> <!-- Cierra la caja abierta anteriormente. -->
+                <div> <!-- Abre una caja para agrupar una etiqueta y su valor. -->
+                    <span>Te pasarías por</span> <!-- Etiqueta que informa el exceso de calorías. -->
+                    <strong id="modalExceso">0 kcal</strong> <!-- JavaScript coloca aquí cuántas calorías superarían el límite. -->
+                </div> <!-- Cierra la caja abierta anteriormente. -->
+            </div> <!-- Cierra la caja abierta anteriormente. -->
+
+            <button id="botonCerrarModal" class="modal-boton" type="button" onclick="cerrarModalCalorias()">Entendido, revisar mi menú</button> <!-- Botón principal que cierra la ventana y devuelve al usuario al menú. -->
+        </section> <!-- Cierra la sección o tarjeta abierta anteriormente. -->
+    </div> <!-- Cierra la caja abierta anteriormente. -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- Carga jsPDF para crear el reporte directamente desde JavaScript. -->
+    <script src="alimentos.js"></script> <!-- Carga la base de datos de alimentos. Debe ir antes de menus.js. -->
+    <script src="menus.js"></script> <!-- Carga las funciones que muestran categorías, totales, búsqueda, menú personalizado y PDF. -->
+</body> <!-- Cierra el cuerpo visible de la página. -->
+</html> <!-- Cierra el documento HTML. -->

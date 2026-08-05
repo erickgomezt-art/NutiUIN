@@ -1,0 +1,740 @@
+/*
+================================================================================
+ARCHIVO: menus.css
+LENGUAJE: CSS
+FUNCIÓN: Diseña menus.html: tarjetas, tabla, gráfica, progreso, modal y botones.
+CONEXIÓN: menus.html lo carga con <link rel="stylesheet" href="menus.css">.
+RELACIÓN CON JAVASCRIPT: menus.js agrega y quita clases como .activo, .llena y
+.meta-completa; por eso cambiar esos nombres aquí también requiere cambiarlos en JS.
+================================================================================
+*/
+/* menus.css: diseño visual del menú de alimentos y del menú personalizado. */
+
+/* Estilos generales de la página del menú. */
+body{ /* Inicia los estilos para el selector body. */
+    margin: 0; /* Quita el margen automático del navegador. */
+    font-family: Arial, sans-serif; /* Define la fuente principal. */
+    background: #f3f8f1; /* Coloca un fondo verde muy claro. */
+    color: #243b2f; /* Define el color principal del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Diseño del encabezado superior. */
+header{ /* Inicia los estilos para el selector header. */
+    background: linear-gradient(135deg, #1b8a5a, #78c850); /* Fondo degradado verde. */
+    color: white; /* Texto blanco dentro del encabezado. */
+    text-align: center; /* Centra el título y la descripción. */
+    padding: 35px 20px; /* Agrega espacio interno al encabezado. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Estilo del título dentro del encabezado. */
+header h1{ /* Inicia los estilos para el selector header h1. */
+    margin: 0; /* Quita el margen superior e inferior del título. */
+    font-size: 38px; /* Hace grande el título del menú. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Estilo del párrafo dentro del encabezado. */
+header p{ /* Inicia los estilos para el selector header p. */
+    font-size: 18px; /* Define el tamaño del subtítulo del encabezado. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Barra de navegación con enlaces. */
+.barra{ /* Inicia los estilos para el selector .barra. */
+    background: white; /* Fondo blanco para separar la barra del encabezado. */
+    padding: 15px; /* Espacio interno de la barra. */
+    text-align: center; /* Centra los enlaces. */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.10); /* Sombra suave debajo de la barra. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Enlaces dentro de la barra de navegación. */
+.barra a{ /* Inicia los estilos para el selector .barra a. */
+    color: #1b5e3a; /* Color verde para los enlaces. */
+    text-decoration: none; /* Quita el subrayado de los enlaces. */
+    font-weight: bold; /* Pone los enlaces en negritas. */
+    margin: 0 15px; /* Separa un enlace de otro. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Caja superior donde se resume el menú personalizado. */
+.resumen-menu{ /* Inicia los estilos para el selector .resumen-menu. */
+    width: 90%; /* Ocupa casi todo el ancho de la pantalla. */
+    max-width: 950px; /* Limita el tamaño máximo de la caja. */
+    margin: 30px auto 0 auto; /* Centra la caja y la separa del encabezado. */
+    background: white; /* Coloca fondo blanco para destacar el resumen. */
+    padding: 25px; /* Agrega espacio interno. */
+    border-radius: 20px; /* Redondea las esquinas. */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12); /* Agrega sombra suave. */
+    box-sizing: border-box; /* Mantiene bien el ancho aunque haya padding. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Ordena los datos del resumen y la gráfica. */
+.resumen-menu{ /* Inicia los estilos para el selector .resumen-menu. */
+    display: grid; /* Usa cuadrícula para acomodar resumen, gráfica y lista. */
+    grid-template-columns: 1fr 230px; /* Deja una columna amplia y otra para la gráfica. */
+    gap: 20px; /* Separa los elementos de la cuadrícula. */
+    align-items: center; /* Alinea verticalmente los elementos. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Título de la caja de resumen. */
+.datos-calorias h2{ /* Inicia los estilos para el selector .datos-calorias h2. */
+    color: #1b5e3a; /* Usa verde para el título del resumen. */
+    margin-top: 0; /* Quita el espacio superior del título. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Párrafos del resumen de calorías. */
+.datos-calorias p{ /* Inicia los estilos para el selector .datos-calorias p. */
+    font-size: 17px; /* Tamaño legible para los números de calorías. */
+    margin: 8px 0; /* Separa cada línea del resumen. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Caja donde va la dona. */
+.grafica-caja{ /* Inicia los estilos para el selector .grafica-caja. */
+    text-align: center; /* Centra la gráfica y su explicación. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Gráfica de dona hecha con fondo cónico. */
+.grafica-dona{ /* Inicia los estilos para el selector .grafica-dona. */
+    width: 145px; /* Define el ancho de la dona. */
+    height: 145px; /* Define la altura de la dona. */
+    border-radius: 50%; /* Convierte el cuadro en círculo. */
+    margin: 0 auto; /* Centra la dona. */
+    background: conic-gradient(#1b8a5a 0%, #dfeee3 0% 100%); /* Pinta calorías usadas y restantes. */
+    display: flex; /* Activa Flexbox dentro de la dona. */
+    align-items: center; /* Centra verticalmente el porcentaje. */
+    justify-content: center; /* Centra horizontalmente el porcentaje. */
+    position: relative; /* Permite colocar el círculo blanco interno. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Círculo blanco interno para que la gráfica parezca dona. */
+.grafica-dona::before{ /* Inicia los estilos para el selector .grafica-dona::before. */
+    content: ""; /* Crea un elemento visual vacío. */
+    width: 92px; /* Ancho del centro blanco. */
+    height: 92px; /* Alto del centro blanco. */
+    background: white; /* Fondo blanco en el centro. */
+    border-radius: 50%; /* Hace circular el centro blanco. */
+    position: absolute; /* Coloca el centro encima de la dona. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Texto del porcentaje encima de la dona. */
+.grafica-dona span{ /* Inicia los estilos para el selector .grafica-dona span. */
+    position: relative; /* Mantiene el texto arriba del círculo blanco. */
+    font-weight: bold; /* Pone el porcentaje en negritas. */
+    color: #1b5e3a; /* Color verde para el porcentaje. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Barra de progreso completa. */
+.barra-progreso{ /* Inicia los estilos para el selector .barra-progreso. */
+    grid-column: 1 / 3; /* Hace que la barra ocupe las dos columnas del resumen. */
+    width: 100%; /* Ocupa todo el ancho disponible. */
+    height: 18px; /* Define la altura de la barra. */
+    background: #dfeee3; /* Color de fondo para las calorías restantes. */
+    border-radius: 30px; /* Redondea la barra. */
+    overflow: hidden; /* Evita que la barra interna se salga. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Barra interna que representa calorías usadas. */
+#progresoCalorias{ /* Inicia los estilos para el selector #progresoCalorias. */
+    width: 0%; /* Inicia sin progreso. */
+    height: 100%; /* Ocupa toda la altura de la barra externa. */
+    background: #1b8a5a; /* Color verde para las calorías consumidas. */
+    transition: 0.3s; /* Suaviza el cambio de tamaño. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Caja donde se muestra la lista de alimentos agregados. */
+.menu-seleccionado{ /* Inicia los estilos para el selector .menu-seleccionado. */
+    grid-column: 1 / 3; /* Ocupa todo el ancho del resumen. */
+    background: #eef8ef; /* Fondo verde claro para separar la lista. */
+    border-radius: 15px; /* Redondea la caja del menú elegido. */
+    padding: 15px; /* Agrega espacio interno. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Lista del menú elegido. */
+.menu-seleccionado ul{ /* Inicia los estilos para el selector .menu-seleccionado ul. */
+    padding-left: 20px; /* Deja sangría para las viñetas. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Contenedor de los botones principales del menú personalizado. */
+.acciones-menu{ /* Inicia los estilos para el selector .acciones-menu. */
+    grid-column: 1 / 3; /* Hace que los botones ocupen las dos columnas del resumen. */
+    display: flex; /* Coloca los botones uno al lado del otro. */
+    gap: 12px; /* Deja espacio entre el botón de limpiar y el botón de PDF. */
+    flex-wrap: wrap; /* Permite que los botones bajen de línea en pantallas pequeñas. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botones finales del menú seleccionado. */
+.boton-limpiar, .boton-pdf{ /* Inicia los estilos para el selector .boton-limpiar, .boton-pdf. */
+    flex: 1; /* Hace que ambos botones usen el mismo espacio. */
+    min-width: 180px; /* Evita que los botones se hagan demasiado pequeños. */
+    color: white; /* Texto blanco. */
+    border: none; /* Quita borde predeterminado. */
+    padding: 12px; /* Espacio interno. */
+    border-radius: 12px; /* Redondea los botones. */
+    cursor: pointer; /* Muestra mano al pasar encima. */
+    font-size: 16px; /* Tamaño del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botón para limpiar el menú elegido. */
+.boton-limpiar{ /* Inicia los estilos para el selector .boton-limpiar. */
+    background: #7a8f37; /* Color diferente para distinguirlo del botón Agregar. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botón para descargar el PDF del menú. */
+.boton-pdf{ /* Inicia los estilos para el selector .boton-pdf. */
+    background: #1b5e3a; /* Verde fuerte para indicar acción final de descarga. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Efecto cuando el usuario pasa el mouse sobre los botones finales. */
+.boton-limpiar:hover, .boton-pdf:hover{ /* Inicia los estilos para el selector .boton-limpiar:hover, .boton-pdf:hover. */
+    filter: brightness(0.92); /* Oscurece un poco el botón para dar respuesta visual. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Contenedor de tarjetas de categorías. */
+.contenedor{ /* Inicia los estilos para el selector .contenedor. */
+    display: flex; /* Activa Flexbox para acomodar tarjetas. */
+    flex-wrap: wrap; /* Permite que las tarjetas bajen de línea si no caben. */
+    justify-content: center; /* Centra las tarjetas horizontalmente. */
+    gap: 20px; /* Deja espacio entre tarjetas. */
+    padding: 35px 20px; /* Agrega espacio alrededor del contenedor. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Tarjeta individual de cada categoría. */
+.tarjeta{ /* Inicia los estilos para el selector .tarjeta. */
+    width: 210px; /* Define el ancho de cada tarjeta. */
+    background: white; /* Fondo blanco para cada tarjeta. */
+    padding: 22px 15px; /* Espacio interno de la tarjeta. */
+    border-radius: 20px; /* Redondea las esquinas. */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Agrega sombra a la tarjeta. */
+    text-align: center; /* Centra el contenido de la tarjeta. */
+    cursor: pointer; /* Muestra una mano al pasar encima. */
+    transition: 0.3s; /* Suaviza la animación del hover. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Efecto al pasar el mouse sobre una tarjeta. */
+.tarjeta:hover{ /* Inicia los estilos para el selector .tarjeta:hover. */
+    transform: translateY(-8px); /* Sube un poco la tarjeta para dar efecto interactivo. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Tamaño del emoji de cada tarjeta. */
+.emoji{ /* Inicia los estilos para el selector .emoji. */
+    font-size: 55px; /* Aumenta el tamaño del emoji. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Estilo del nombre de cada categoría. */
+.tarjeta h2{ /* Inicia los estilos para el selector .tarjeta h2. */
+    color: #1b5e3a; /* Usa verde para el título de la tarjeta. */
+    margin-bottom: 5px; /* Deja poco espacio debajo del título. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Estilo del contador de alimentos en cada tarjeta. */
+.tarjeta p{ /* Inicia los estilos para el selector .tarjeta p. */
+    color: #555; /* Usa gris para el contador. */
+    margin: 0; /* Quita el margen del párrafo. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Caja donde se muestra la tabla de alimentos. */
+.lista{ /* Inicia los estilos para el selector .lista. */
+    width: 90%; /* Ocupa la mayoría del ancho disponible. */
+    max-width: 950px; /* Limita el ancho máximo de la tabla. */
+    margin: 0 auto 40px auto; /* Centra la caja y agrega espacio inferior. */
+    background: white; /* Fondo blanco para la zona de tabla. */
+    padding: 25px; /* Espacio interno de la caja. */
+    border-radius: 20px; /* Redondea las esquinas. */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12); /* Agrega sombra suave. */
+    box-sizing: border-box; /* Mantiene el ancho correcto aunque haya padding. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Título de la categoría seleccionada. */
+.lista h2{ /* Inicia los estilos para el selector .lista h2. */
+    color: #1b5e3a; /* Coloca el título en verde. */
+    text-align: center; /* Centra el título. */
+    margin-top: 0; /* Quita el margen superior. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Texto de ayuda del buscador. */
+.ayuda{ /* Inicia los estilos para el selector .ayuda. */
+    text-align: center; /* Centra el texto de ayuda. */
+    color: #555; /* Usa color gris para el texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Campo de búsqueda. */
+input{ /* Inicia los estilos para el selector input. */
+    width: 100%; /* Hace que el input use todo el ancho de la caja. */
+    padding: 12px; /* Agrega espacio interno para escribir cómodo. */
+    margin: 15px 0; /* Separa el input de otros elementos. */
+    border: 1px solid #ccc; /* Coloca borde gris claro. */
+    border-radius: 10px; /* Redondea el input. */
+    font-size: 16px; /* Tamaño del texto dentro del input. */
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho total. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Contenedor que permite mover la tabla en celular si es muy ancha. */
+#tablaAlimentos{ /* Inicia los estilos para el selector #tablaAlimentos. */
+    overflow-x: auto; /* Permite scroll horizontal cuando la tabla no cabe. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Tabla de alimentos. */
+table{ /* Inicia los estilos para el selector table. */
+    width: 100%; /* Hace que la tabla use todo el ancho disponible. */
+    border-collapse: collapse; /* Une los bordes de las celdas. */
+    margin-top: 10px; /* Deja espacio arriba de la tabla. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Encabezados de la tabla. */
+th{ /* Inicia los estilos para el selector th. */
+    background: #1b8a5a; /* Fondo verde para los encabezados. */
+    color: white; /* Texto blanco en los encabezados. */
+    padding: 12px; /* Espacio interno en cada encabezado. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Celdas normales de la tabla. */
+td{ /* Inicia los estilos para el selector td. */
+    padding: 10px; /* Espacio interno de cada celda. */
+    border-bottom: 1px solid #ddd; /* Línea separadora debajo de cada fila. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Efecto al pasar el mouse sobre una fila. */
+tr:hover{ /* Inicia los estilos para el selector tr:hover. */
+    background: #eef8ef; /* Cambia el fondo de la fila a verde claro. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botones pequeños dentro de la tabla. */
+.boton-agregar, .boton-quitar{ /* Inicia los estilos para el selector .boton-agregar, .boton-quitar. */
+    background: #1b8a5a; /* Color verde para agregar. */
+    color: white; /* Texto blanco. */
+    border: none; /* Quita borde predeterminado. */
+    padding: 8px 10px; /* Espacio interno del botón. */
+    border-radius: 8px; /* Redondea el botón. */
+    cursor: pointer; /* Muestra cursor de mano. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botón para quitar alimentos del menú. */
+.boton-quitar{ /* Inicia los estilos para el selector .boton-quitar. */
+    background: #b54848; /* Color rojo suave para diferenciar la acción de quitar. */
+    margin-left: 6px; /* Separa el botón del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Mensaje cuando no hay resultados o cuando se intenta pasar de calorías. */
+.aviso{ /* Inicia los estilos para el selector .aviso. */
+    text-align: center; /* Centra el mensaje. */
+    color: #666; /* Usa gris para el mensaje. */
+    padding: 20px; /* Agrega espacio alrededor del mensaje. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Mensaje de alerta importante. */
+.alerta{ /* Inicia los estilos para el selector .alerta. */
+    color: #b54848; /* Usa color rojo suave para alertas. */
+    font-weight: bold; /* Resalta la alerta. */
+} /* Cierra el bloque de estilos anterior. */
+
+
+/* Contenedor temporal que se usa solo para armar el PDF. */
+.contenido-pdf{ /* Inicia los estilos para el selector .contenido-pdf. */
+    width: 760px; /* Define un ancho cómodo para formato carta/A4 antes de convertir a PDF. */
+    background: white; /* Fondo blanco para que el PDF se vea limpio. */
+    color: #243b2f; /* Color principal del texto del PDF. */
+    padding: 30px; /* Espacio interno para que el contenido no quede pegado. */
+    font-family: Arial, sans-serif; /* Usa la misma fuente del proyecto. */
+    box-sizing: border-box; /* Mantiene el ancho correcto aunque tenga padding. */
+    position: absolute; /* Permite poner el contenido fuera de la pantalla. */
+    left: -9999px; /* Oculta el contenido temporal sin usar display none. */
+    top: 0; /* Lo deja arriba para que html2pdf pueda tomarlo correctamente. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Título principal dentro del PDF. */
+.contenido-pdf h1{ /* Inicia los estilos para el selector .contenido-pdf h1. */
+    color: #1b5e3a; /* Color verde del proyecto. */
+    text-align: center; /* Centra el nombre de la app. */
+    margin-bottom: 5px; /* Deja poco espacio debajo. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Subtítulo dentro del PDF. */
+.contenido-pdf h2{ /* Inicia los estilos para el selector .contenido-pdf h2. */
+    text-align: center; /* Centra el título del reporte. */
+    margin-top: 0; /* Quita espacio superior innecesario. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Caja de datos generales dentro del PDF. */
+.resumen-pdf{ /* Inicia los estilos para el selector .resumen-pdf. */
+    background: #eef8ef; /* Fondo verde claro para resaltar los resultados. */
+    border-radius: 12px; /* Redondea la caja de resumen. */
+    padding: 15px; /* Agrega espacio interno. */
+    margin: 18px 0; /* Separa el resumen de otros elementos. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Párrafos del resumen dentro del PDF. */
+.resumen-pdf p{ /* Inicia los estilos para el selector .resumen-pdf p. */
+    margin: 7px 0; /* Separa un dato de otro. */
+    font-size: 14px; /* Tamaño adecuado para PDF. */
+} /* Cierra el bloque de estilos anterior. */
+
+
+/* Barra visual de calorías dentro del PDF. */
+.barra-pdf{ /* Inicia los estilos para el selector .barra-pdf. */
+    width: 100%; /* Usa todo el ancho disponible del resumen. */
+    height: 12px; /* Define una altura pequeña para la barra. */
+    background: #dfeee3; /* Color claro para representar calorías restantes. */
+    border-radius: 20px; /* Redondea la barra. */
+    overflow: hidden; /* Evita que la barra interna se salga. */
+    margin-top: 10px; /* Separa la barra de los textos del resumen. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Parte interna de la barra del PDF. */
+.barra-pdf div{ /* Inicia los estilos para el selector .barra-pdf div. */
+    height: 100%; /* Ocupa toda la altura de la barra externa. */
+    background: #1b8a5a; /* Verde para representar calorías consumidas. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Tabla del menú dentro del PDF. */
+.tabla-pdf{ /* Inicia los estilos para el selector .tabla-pdf. */
+    width: 100%; /* La tabla usa todo el ancho del PDF. */
+    border-collapse: collapse; /* Une los bordes de la tabla. */
+    margin-top: 15px; /* Separa la tabla del resumen. */
+    font-size: 13px; /* Reduce un poco el texto para que quepa mejor. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Encabezados de la tabla del PDF. */
+.tabla-pdf th{ /* Inicia los estilos para el selector .tabla-pdf th. */
+    background: #1b8a5a; /* Fondo verde para encabezados. */
+    color: white; /* Texto blanco para encabezados. */
+    padding: 9px; /* Espacio interno de encabezados. */
+    text-align: left; /* Alinea el texto a la izquierda. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Celdas de la tabla del PDF. */
+.tabla-pdf td{ /* Inicia los estilos para el selector .tabla-pdf td. */
+    border-bottom: 1px solid #d6e5d9; /* Línea suave entre filas. */
+    padding: 8px; /* Espacio interno de celdas. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Texto final del PDF. */
+.firma-pdf{ /* Inicia los estilos para el selector .firma-pdf. */
+    margin-top: 20px; /* Separa la firma de la tabla. */
+    color: #666; /* Usa gris para que no robe atención. */
+    font-size: 12px; /* Texto pequeño para nota final. */
+    text-align: center; /* Centra la nota final. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Reglas especiales para pantallas pequeñas. */
+@media(max-width: 700px){ /* Inicia reglas responsivas que se aplican solo al tamaño de pantalla indicado. */
+    header h1{ /* Inicia los estilos para el selector header h1. */
+        font-size: 30px; /* Reduce el título en celulares. */
+    } /* Cierra el bloque de estilos anterior. */
+
+    table{ /* Inicia los estilos para el selector table. */
+        font-size: 14px; /* Reduce el tamaño de la tabla en celulares. */
+    } /* Cierra el bloque de estilos anterior. */
+
+    .tarjeta{ /* Inicia los estilos para el selector .tarjeta. */
+        width: 85%; /* Hace que las tarjetas sean más anchas en celular. */
+    } /* Cierra el bloque de estilos anterior. */
+
+    .resumen-menu{ /* Inicia los estilos para el selector .resumen-menu. */
+        grid-template-columns: 1fr; /* En celular todo se acomoda en una sola columna. */
+    } /* Cierra el bloque de estilos anterior. */
+
+    .barra-progreso, .menu-seleccionado, .acciones-menu{ /* Inicia los estilos para el selector .barra-progreso, .menu-seleccionado, .acciones-menu. */
+        grid-column: 1; /* En celular los elementos ocupan una sola columna. */
+    } /* Cierra el bloque de estilos anterior. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* =============================
+   MEJORAS NUEVAS: ESTADO Y MODAL
+   ============================= */
+
+/* Mensaje dinámico que explica qué tan cerca está el usuario de su meta. */
+.estado-meta{ /* Inicia los estilos para el selector .estado-meta. */
+    display: inline-block; /* Define el sistema usado para acomodar el elemento. */
+    margin-top: 10px !important; /* Define la propiedad CSS margin-top para este elemento. */
+    padding: 8px 12px; /* Controla el espacio interior del elemento. */
+    border-radius: 999px; /* Redondea las esquinas. */
+    background: #e6f5eb; /* Define el fondo o degradado del elemento. */
+    color: #1b6e48; /* Define el color del texto. */
+    font-size: 14px !important; /* Define el tamaño del texto. */
+    font-weight: bold; /* Define el grosor del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+.estado-meta.medio{ /* Inicia los estilos para el selector .estado-meta.medio. */
+    background: #fff4d8; /* Define el fondo o degradado del elemento. */
+    color: #7b5b00; /* Define el color del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+.estado-meta.cerca{ /* Inicia los estilos para el selector .estado-meta.cerca. */
+    background: #ffe7d6; /* Define el fondo o degradado del elemento. */
+    color: #9a4b13; /* Define el color del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+.estado-meta.completa{ /* Inicia los estilos para el selector .estado-meta.completa. */
+    background: #e4f6e8; /* Define el fondo o degradado del elemento. */
+    color: #146b45; /* Define el color del texto. */
+    box-shadow: 0 0 0 3px rgba(27, 138, 90, 0.12); /* Agrega una sombra para dar profundidad. */
+} /* Cierra el bloque de estilos anterior. */
+
+.estado-meta.libre{ /* Inicia los estilos para el selector .estado-meta.libre. */
+    background: #edf1f4; /* Define el fondo o degradado del elemento. */
+    color: #53606a; /* Define el color del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Resalta el resumen cuando la gráfica llega al 100%. */
+.resumen-menu.meta-completa{ /* Inicia los estilos para el selector .resumen-menu.meta-completa. */
+    box-shadow: 0 0 0 3px rgba(27, 138, 90, 0.15), 0 10px 28px rgba(27, 138, 90, 0.18); /* Agrega una sombra para dar profundidad. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* La gráfica completa da un pequeño pulso visual. */
+.grafica-dona.llena{ /* Inicia los estilos para el selector .grafica-dona.llena. */
+    animation: pulsoMeta 1.4s ease-in-out infinite alternate; /* Aplica una animación definida con @keyframes. */
+} /* Cierra el bloque de estilos anterior. */
+
+@keyframes pulsoMeta{ /* Inicia la definición de los pasos de una animación CSS. */
+    from{ /* Define este paso dentro de la animación CSS. */
+        transform: scale(1); /* Mueve, escala o gira visualmente el elemento. */
+        box-shadow: 0 0 0 0 rgba(27, 138, 90, 0.18); /* Agrega una sombra para dar profundidad. */
+    } /* Cierra el bloque de estilos anterior. */
+    to{ /* Define este paso dentro de la animación CSS. */
+        transform: scale(1.04); /* Mueve, escala o gira visualmente el elemento. */
+        box-shadow: 0 0 0 12px rgba(27, 138, 90, 0); /* Agrega una sombra para dar profundidad. */
+    } /* Cierra el bloque de estilos anterior. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Hace más clara la lista de alimentos agregados. */
+.menu-seleccionado li{ /* Inicia los estilos para el selector .menu-seleccionado li. */
+    margin: 9px 0; /* Controla el espacio exterior del elemento. */
+    line-height: 1.5; /* Define la separación vertical entre líneas de texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+.menu-seleccionado li span{ /* Inicia los estilos para el selector .menu-seleccionado li span. */
+    color: #5d6a62; /* Define el color del texto. */
+    font-size: 14px; /* Define el tamaño del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Estado visual del botón mientras se genera el PDF. */
+.boton-pdf:disabled{ /* Inicia los estilos para el selector .boton-pdf:disabled. */
+    opacity: 0.65; /* Define el nivel de transparencia. */
+    cursor: wait; /* Cambia la forma del cursor al pasar sobre el elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Evita mover la página mientras la ventana frontal está abierta. */
+body.modal-abierto{ /* Inicia los estilos para el selector body.modal-abierto. */
+    overflow: hidden; /* Controla qué ocurre con contenido que se sale de la caja. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Capa completa de la ventana de límite de calorías. */
+.modal-calorias{ /* Inicia los estilos para el selector .modal-calorias. */
+    position: fixed; /* Define el método de posicionamiento. */
+    inset: 0; /* Define distancias de los cuatro lados. */
+    z-index: 9999; /* Controla qué elemento aparece por encima de otro. */
+    display: flex; /* Define el sistema usado para acomodar el elemento. */
+    align-items: center; /* Alinea elementos en el eje secundario. */
+    justify-content: center; /* Distribuye elementos en el eje principal. */
+    padding: 22px; /* Controla el espacio interior del elemento. */
+    opacity: 0; /* Define el nivel de transparencia. */
+    visibility: hidden; /* Controla si el elemento es visible. */
+    pointer-events: none; /* Controla si el elemento recibe clics. */
+    transition: opacity 0.25s ease, visibility 0.25s ease; /* Suaviza cambios visuales. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-calorias.activo{ /* Inicia los estilos para el selector .modal-calorias.activo. */
+    opacity: 1; /* Define el nivel de transparencia. */
+    visibility: visible; /* Controla si el elemento es visible. */
+    pointer-events: auto; /* Controla si el elemento recibe clics. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Fondo oscuro que cubre la página detrás de la ventana. */
+.modal-fondo{ /* Inicia los estilos para el selector .modal-fondo. */
+    position: absolute; /* Define el método de posicionamiento. */
+    inset: 0; /* Define distancias de los cuatro lados. */
+    background: rgba(12, 35, 24, 0.72); /* Define el fondo o degradado del elemento. */
+    backdrop-filter: blur(5px); /* Define la propiedad CSS backdrop-filter para este elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Tarjeta que aparece enfrente del usuario. */
+.modal-tarjeta{ /* Inicia los estilos para el selector .modal-tarjeta. */
+    position: relative; /* Define el método de posicionamiento. */
+    z-index: 1; /* Controla qué elemento aparece por encima de otro. */
+    width: min(92vw, 540px); /* Define el ancho del elemento. */
+    background: white; /* Define el fondo o degradado del elemento. */
+    border-radius: 26px; /* Redondea las esquinas. */
+    padding: 30px; /* Controla el espacio interior del elemento. */
+    box-sizing: border-box; /* Hace que el tamaño incluya borde y relleno. */
+    text-align: center; /* Define la alineación del texto. */
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35); /* Agrega una sombra para dar profundidad. */
+    transform: translateY(24px) scale(0.96); /* Mueve, escala o gira visualmente el elemento. */
+    transition: transform 0.25s ease; /* Suaviza cambios visuales. */
+    border-top: 7px solid #b54848; /* Define la propiedad CSS border-top para este elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-calorias.activo .modal-tarjeta{ /* Inicia los estilos para el selector .modal-calorias.activo .modal-tarjeta. */
+    transform: translateY(0) scale(1); /* Mueve, escala o gira visualmente el elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botón pequeño de cerrar en la esquina. */
+.modal-cerrar{ /* Inicia los estilos para el selector .modal-cerrar. */
+    position: absolute; /* Define el método de posicionamiento. */
+    top: 12px; /* Define la distancia desde arriba. */
+    right: 16px; /* Define la distancia desde la derecha. */
+    width: 38px; /* Define el ancho del elemento. */
+    height: 38px; /* Define la altura del elemento. */
+    border: none; /* Define el borde del elemento. */
+    border-radius: 50%; /* Redondea las esquinas. */
+    background: #f1f4f2; /* Define el fondo o degradado del elemento. */
+    color: #526158; /* Define el color del texto. */
+    font-size: 27px; /* Define el tamaño del texto. */
+    cursor: pointer; /* Cambia la forma del cursor al pasar sobre el elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-cerrar:hover{ /* Inicia los estilos para el selector .modal-cerrar:hover. */
+    background: #e4ebe6; /* Define el fondo o degradado del elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Círculo de advertencia principal. */
+.modal-icono{ /* Inicia los estilos para el selector .modal-icono. */
+    width: 72px; /* Define el ancho del elemento. */
+    height: 72px; /* Define la altura del elemento. */
+    margin: 0 auto 14px auto; /* Controla el espacio exterior del elemento. */
+    border-radius: 50%; /* Redondea las esquinas. */
+    display: flex; /* Define el sistema usado para acomodar el elemento. */
+    align-items: center; /* Alinea elementos en el eje secundario. */
+    justify-content: center; /* Distribuye elementos en el eje principal. */
+    background: #fff0f0; /* Define el fondo o degradado del elemento. */
+    color: #b54848; /* Define el color del texto. */
+    font-size: 42px; /* Define el tamaño del texto. */
+    font-weight: bold; /* Define el grosor del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-etiqueta{ /* Inicia los estilos para el selector .modal-etiqueta. */
+    display: inline-block; /* Define el sistema usado para acomodar el elemento. */
+    padding: 6px 11px; /* Controla el espacio interior del elemento. */
+    border-radius: 999px; /* Redondea las esquinas. */
+    background: #fff0f0; /* Define el fondo o degradado del elemento. */
+    color: #a33f3f; /* Define el color del texto. */
+    font-size: 13px; /* Define el tamaño del texto. */
+    font-weight: bold; /* Define el grosor del texto. */
+    text-transform: uppercase; /* Define la propiedad CSS text-transform para este elemento. */
+    letter-spacing: 0.6px; /* Define el espacio entre letras. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-tarjeta h2{ /* Inicia los estilos para el selector .modal-tarjeta h2. */
+    margin: 14px 0 8px 0; /* Controla el espacio exterior del elemento. */
+    color: #263b30; /* Define el color del texto. */
+    font-size: 25px; /* Define el tamaño del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Frase exacta solicitada por el usuario. */
+.modal-mensaje{ /* Inicia los estilos para el selector .modal-mensaje. */
+    color: #5a625e; /* Define el color del texto. */
+    font-size: 17px; /* Define el tamaño del texto. */
+    line-height: 1.55; /* Define la separación vertical entre líneas de texto. */
+    margin: 0 auto 20px auto; /* Controla el espacio exterior del elemento. */
+    max-width: 440px; /* Limita el ancho máximo del elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Resumen rápido dentro de la ventana. */
+.modal-detalles{ /* Inicia los estilos para el selector .modal-detalles. */
+    display: grid; /* Define el sistema usado para acomodar el elemento. */
+    grid-template-columns: repeat(3, 1fr); /* Define las columnas de la cuadrícula. */
+    gap: 10px; /* Define la separación entre elementos. */
+    margin: 20px 0; /* Controla el espacio exterior del elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-detalles div{ /* Inicia los estilos para el selector .modal-detalles div. */
+    background: #f5f8f6; /* Define el fondo o degradado del elemento. */
+    border-radius: 15px; /* Redondea las esquinas. */
+    padding: 14px 10px; /* Controla el espacio interior del elemento. */
+    min-width: 0; /* Define el ancho mínimo del elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-detalles span{ /* Inicia los estilos para el selector .modal-detalles span. */
+    display: block; /* Define el sistema usado para acomodar el elemento. */
+    color: #6c756f; /* Define el color del texto. */
+    font-size: 12px; /* Define el tamaño del texto. */
+    margin-bottom: 7px; /* Define la propiedad CSS margin-bottom para este elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-detalles strong{ /* Inicia los estilos para el selector .modal-detalles strong. */
+    display: block; /* Define el sistema usado para acomodar el elemento. */
+    color: #243b2f; /* Define el color del texto. */
+    font-size: 15px; /* Define el tamaño del texto. */
+    overflow-wrap: anywhere; /* Define la propiedad CSS overflow-wrap para este elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+#modalExceso{ /* Inicia los estilos para el selector #modalExceso. */
+    color: #b54848; /* Define el color del texto. */
+} /* Cierra el bloque de estilos anterior. */
+
+/* Botón principal de la ventana. */
+.modal-boton{ /* Inicia los estilos para el selector .modal-boton. */
+    width: 100%; /* Define el ancho del elemento. */
+    border: none; /* Define el borde del elemento. */
+    border-radius: 14px; /* Redondea las esquinas. */
+    padding: 14px 18px; /* Controla el espacio interior del elemento. */
+    background: #1b8a5a; /* Define el fondo o degradado del elemento. */
+    color: white; /* Define el color del texto. */
+    font-size: 16px; /* Define el tamaño del texto. */
+    font-weight: bold; /* Define el grosor del texto. */
+    cursor: pointer; /* Cambia la forma del cursor al pasar sobre el elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+.modal-boton:hover{ /* Inicia los estilos para el selector .modal-boton:hover. */
+    background: #146b45; /* Define el fondo o degradado del elemento. */
+} /* Cierra el bloque de estilos anterior. */
+
+@media(max-width: 620px){ /* Inicia reglas responsivas que se aplican solo al tamaño de pantalla indicado. */
+    .modal-tarjeta{ /* Inicia los estilos para el selector .modal-tarjeta. */
+        padding: 26px 18px 20px 18px; /* Controla el espacio interior del elemento. */
+        border-radius: 22px; /* Redondea las esquinas. */
+    } /* Cierra el bloque de estilos anterior. */
+
+    .modal-detalles{ /* Inicia los estilos para el selector .modal-detalles. */
+        grid-template-columns: 1fr; /* Define las columnas de la cuadrícula. */
+    } /* Cierra el bloque de estilos anterior. */
+
+    .modal-tarjeta h2{ /* Inicia los estilos para el selector .modal-tarjeta h2. */
+        font-size: 22px; /* Define el tamaño del texto. */
+    } /* Cierra el bloque de estilos anterior. */
+} /* Cierra el bloque de estilos anterior. */
+
+
+/* =============================================================
+   SECCIONES Y TABLA IMPORTADAS DESDE EL ARCHIVO DE EXCEL
+   ============================================================= */
+.tarjeta{
+    min-height: 155px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
+.tarjeta.activa{
+    border-color: #1b8a5a;
+    background: #eef9f1;
+    transform: translateY(-5px);
+    box-shadow: 0 9px 22px rgba(27, 138, 90, 0.25);
+}
+
+.tabla-excel{
+    min-width: 980px;
+}
+
+.tabla-excel th{
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabla-excel td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabla-excel .columna-alimento{
+    min-width: 260px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.tabla-excel tbody tr:nth-child(even){
+    background: #f8fcf8;
+}
+
+@media(max-width: 700px){
+    .tabla-excel{
+        min-width: 920px;
+        font-size: 13px;
+    }
+}
