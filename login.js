@@ -45,7 +45,7 @@ function calcularIMC(){ // Declara la función que se ejecuta al presionar el bo
     let actividad = Number(document.getElementById("actividad").value); // Toma el factor de actividad física y lo convierte a número.
     let objetivo = document.getElementById("objetivo").value; // Toma el objetivo seleccionado por el usuario.
     let resultado = document.getElementById("resultado"); // Guarda la caja donde se mostrarán los resultados.
-    let botonMenu = document.getElementById("botonMenu"); // Guarda el botón que abre el menú personalizado.
+    let botonMenu = document.getElementById("botonMenu"); //  Guarda el botón que abre el menú personalizado.
 
     if(nombre == "" || edad == 0 || peso == 0 || estatura == 0 || actividad == 0){ // Verifica si falta algún dato obligatorio.
         resultado.innerHTML = "⚠️ Completa todos los campos para calcular."; // Muestra una advertencia si faltan datos.
